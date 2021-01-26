@@ -1,0 +1,4 @@
+monitoring-configuration-fetcher
+
+/public/*
+!/public/.keep

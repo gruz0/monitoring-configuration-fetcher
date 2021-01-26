@@ -1,0 +1,11 @@
+.git
+.gitignore
+*.md
+
+Dockerfile
+Makefile
+TODO
+monitoring-configuration-fetcher
+
+/public/*
+!/public/.keep
