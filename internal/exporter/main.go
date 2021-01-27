@@ -31,7 +31,7 @@ func (e *Exporter) Export(domains []types.Domain) error {
 		sb.WriteString(buildKey("domain") + "=" + domain.Name + lineBreak)
 
 		for _, plugin := range domain.Plugins {
-			sb.WriteString(buildKey("plugins", plugin.Name, "ENABLE") + "=1" + lineBreak)
+			sb.WriteString(buildKey("plugins", plugin.Namespace, plugin.Name, "ENABLE") + "=1" + lineBreak)
 		}
 
 		if err := e.save(domain.Name, sb.String()); err != nil {

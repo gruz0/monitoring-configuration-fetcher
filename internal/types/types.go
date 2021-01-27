@@ -11,6 +11,7 @@ type Domain struct {
 }
 
 type Plugin struct {
-	ID   int    `json:"id"`
-	Name string `json:"name"`
+	ID        int    `json:"id"`
+	Namespace string `json:"namespace"`
+	Name      string `json:"name"`
 }
