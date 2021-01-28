@@ -44,7 +44,7 @@ func (c *Client) GetConfiguration() (types.Configuration, error) {
 	}
 
 	type responseStruct struct {
-		Configuration []types.Configuration
+		Configuration types.Configuration
 	}
 
 	var result responseStruct
@@ -53,5 +53,5 @@ func (c *Client) GetConfiguration() (types.Configuration, error) {
 		return types.Configuration{}, err
 	}
 
-	return result.Configuration[0], nil
+	return result.Configuration, nil
 }

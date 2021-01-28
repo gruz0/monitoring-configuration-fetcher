@@ -1,6 +1,7 @@
 package exporter
 
 import (
+	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"strings"
@@ -32,6 +33,24 @@ func (e *Exporter) Export(domains []types.Domain) error {
 
 		for _, plugin := range domain.Plugins {
 			sb.WriteString(buildKey("plugins", plugin.Namespace, plugin.Name, "ENABLE") + "=1" + lineBreak)
+
+			var settings map[string]interface{}
+			if err := json.Unmarshal(plugin.Settings, &settings); err != nil {
+				return err
+			}
+
+			for key, value := range settings {
+				var v interface{}
+
+				switch t := value.(type) {
+				case string:
+					v = t
+				case float64:
+					v = fmt.Sprint(int(t))
+				}
+
+				sb.WriteString(buildKey("plugins", plugin.Namespace, plugin.Name, key) + "=" + v.(string) + lineBreak)
+			}
 		}
 
 		if err := e.save(domain.Name, sb.String()); err != nil {

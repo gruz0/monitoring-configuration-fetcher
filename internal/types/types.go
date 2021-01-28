@@ -1,5 +1,7 @@
 package types
 
+import "gorm.io/datatypes"
+
 type Configuration struct {
 	Domains []Domain
 }
@@ -14,4 +16,5 @@ type Plugin struct {
 	ID        int    `json:"id"`
 	Namespace string `json:"namespace"`
 	Name      string `json:"name"`
+	Settings  datatypes.JSON
 }
