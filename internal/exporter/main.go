@@ -29,6 +29,8 @@ func (e *Exporter) Export(domains []types.Domain) error {
 	for _, domain := range domains {
 		sb.Reset()
 
+		sb.WriteString("MONITORING_WORKER_REPORTER=api" + lineBreak)
+
 		sb.WriteString(buildKey("domain") + "=" + domain.Name + lineBreak)
 
 		for _, plugin := range domain.Plugins {
