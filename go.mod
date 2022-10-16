@@ -3,7 +3,7 @@ module github.com/gruz0/monitoring-configuration-fetcher
 go 1.19
 
 require (
-	github.com/google/uuid v1.2.0
+	github.com/google/uuid v1.3.0
 	github.com/labstack/gommon v0.3.0
 	gorm.io/datatypes v1.0.0
 )
