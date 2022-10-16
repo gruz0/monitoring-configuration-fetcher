@@ -19,10 +19,10 @@ run:
 test:
 	go test -v -race ./...
 
-build-container:
-	docker build -t gruz0/monitoring-configuration-fetcher .
+docker-build:
+	docker build --rm -t gruz0/monitoring-configuration-fetcher .
 
-run-container:
+docker-run:
 	docker run --rm -it -e "MONITORING_CONFIGURATION_SERVICE_URL=$(MONITORING_CONFIGURATION_SERVICE_URL)" -e "OUTPUT_DIR=$(OUTPUT_DIR)" gruz0/monitoring-configuration-fetcher
 
 .PHONY: build run build-static test build-container run-container
